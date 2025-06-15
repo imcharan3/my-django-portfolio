@@ -1,0 +1,246 @@
+/* Reset & Font */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #2b0a3d, #4b0082, #8e2de2, #bb00ff);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+
+/* Navbar */
+.navbar {
+    position: fixed;                /* ⬅️ Fix it to the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;                   /* ⬅️ Keep it above everything else */
+    background: rgba(43, 10, 61, 0.8);  /* Purple + transparency */
+    backdrop-filter: blur(8px);     /* Soft glass effect */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 15px rgba(255, 255, 255, 0.1);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* circular */
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: white;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    padding: 160px 20px 100px 20px;  /* ⬅️ Increased top padding to avoid overlap */
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent);
+    animation: bgFade 6s ease-in-out infinite alternate;
+}
+
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.profile-img {
+    width: 180px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transition: transform 0.5s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.resume-btn {
+    display: inline-block;
+    background: white;
+    color: #4b0082;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.resume-btn:hover {
+    background: #4b0082;
+    color: white;
+    box-shadow: 0 0 15px white;
+}
+
+
+/* Sections */
+/* Container Styling */
+/* Container Styling */
+.section {
+    ...
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(187, 0, 255, 0.2);
+}
+
+.section {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 50px 35px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    color: #ffffff; /* ✅ Text is now white */
+    text-align: center;
+}
+
+.section:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* ✅ White glow on hover */
+}
+
+
+.section:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 25px #bb00ff;
+}
+
+/* Headings inside sections */
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;  /* ✅ White heading */
+}
+
+
+
+/* Paragraphs inside sections */
+.section p,
+.section li {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 10px 0;
+    color: #ffffff; /* ✅ White content text */
+}
+.section h2:hover {
+    text-shadow: 0 0 10px white;
+}
+
+
+
+
+/* Contact links override for purple text */
+.contact-list li, .contact-list a {
+    color: white;
+}
+
+.contact-list a:hover {
+    color: white;
+    text-shadow: 0 0 8px #bb00ff;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.contact-list li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.contact-list a {
+    color: white;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.contact-list a:hover {
+    color: #2b0a3d;
+}
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 30px 20px;
+    }
+}
+
+
+
+/* Skills */
+.skills-list li {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid #bb00ff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.skills-list li:hover {
+    background: #bb00ff;
+    color: white;
+    box-shadow: 0 0 12px #bb00ff;
+}
