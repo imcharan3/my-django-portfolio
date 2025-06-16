@@ -18,6 +18,7 @@
     
     <!-- Top Navbar -->
  <nav class="navbar">
+<<<<<<< HEAD
   <div class="logo logo-dropdown">
   <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
   <span class="logo-text">
@@ -38,18 +39,34 @@
     <!-- navbar links like Home, About, Skills, etc. -->
   </ul>
 
+=======
+  <div class="logo">
+    <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
+    <span class="logo-text">ADISHTI CHARAN TEJA</span>
+  </div>
+
+>>>>>>> 57148809dc710e2ff3307957f47fd4d7246a8645
   <!-- ✅ Toggle button -->
   <div class="menu-toggle" onclick="toggleMenu()">
     &#9776; <!-- Unicode hamburger icon -->
   </div>
 
   <ul class="nav-links" id="navLinks">
+<<<<<<< HEAD
     <li><a href="/">Home</a></li>
     <li><a href="/#about">About</a></li>
     <li><a href="/#skills">Skills</a></li>
     <li><a href="/#projects">Projects</a></li>
     <li><a href="/#resume">Resume</a></li>
     <li><a href="/#contact">Contact</a></li>
+=======
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+>>>>>>> 57148809dc710e2ff3307957f47fd4d7246a8645
   </ul>
 </nav>
 
@@ -76,6 +93,7 @@
 <script>
 function toggleMenu() {
     const nav = document.getElementById('navLinks');
+
     const dropdown = document.getElementById('dropdownMenu');
 
     nav.classList.toggle('active');
@@ -96,12 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             nav.classList.remove('active');
             dropdown.classList.remove('active');
+    nav.classList.toggle('active');
+}
+
+// ✅ Close mobile menu after clicking a link
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('#navLinks a');
+    const nav = document.getElementById('navLinks');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+
         });
     });
 });
 </script>
-
-
 
 
 </body>
