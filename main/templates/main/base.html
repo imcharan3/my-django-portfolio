@@ -4,24 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Charan's Portfolio{% endblock %}</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Meta for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-        <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
-        <span class="logo-text">ADISHTI CHARAN TEJA</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-             <li><a href="#resume">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    
+    <!-- Top Navbar -->
+ <nav class="navbar">
+  <div class="logo">
+    <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
+    <span class="logo-text">ADISHTI CHARAN TEJA</span>
+  </div>
 
+  <!-- ✅ Toggle button -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    &#9776; <!-- Unicode hamburger icon -->
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+
+
+    <!-- Main Content -->
     {% block content %}{% endblock %}
+
+    <!-- Footer Navbar -->
+    <footer class="footer-nav">
+        <div class="footer-container">
+             <p class="footer-message">
+                    © 2025 Adishti Charan Teja. Designed & developed with dedication and purple passion.
+                </p>
+        </div>
+    </footer>
+ <script>
+  function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+  }
+</script>
+<script>
+function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('active');
+}
+
+// ✅ Close mobile menu after clicking a link
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('#navLinks a');
+    const nav = document.getElementById('navLinks');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        });
+    });
+});
+</script>
+
+
+
 </body>
 </html>
