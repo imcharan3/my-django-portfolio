@@ -4,45 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Charan's Portfolio{% endblock %}</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
-
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Meta for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    
-    <!-- Top Navbar -->
- <nav class="navbar">
-  <div class="logo logo-dropdown">
-  <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
-  <span class="logo-text">
-  ADISHTI CHARAN TEJA <i class="fas fa-caret-down dropdown-indicator"></i>
-  </span>
-  <ul class="dropdown-menu">
-    <li><a href="{% url 'personal_details' %}" target="_blank">Personal Details</a></li>
-    <li><a href="{% url 'education' %}" target="_blank">Education</a></li>
-    <li><a href="{% url 'personal_skills' %}" target="_blank">Personal Skills</a></li>
-    <li><a href="{% url 'personal_projects' %}" target="_blank">Personal Projects</a></li>
-    <li><a href="{% url 'internships' %}" target="_blank">Internships & Certifications</a></li>
-  </ul>
-</div>
- 
-<div class="menu-toggle">...</div>
 
-  <ul class="nav-links" id="navLinks">
-    <!-- navbar links like Home, About, Skills, etc. -->
-  </ul>
-
-
-  <!-- ✅ Toggle button -->
-  <div class="menu-toggle" onclick="toggleMenu()">
-    &#9776; <!-- Unicode hamburger icon -->
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo logo-dropdown" id="profileDropdown">
+    <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
+    <span class="logo-text" id="dropdownToggle">
+      ADISHTI CHARAN TEJA <i class="fas fa-caret-down dropdown-indicator"></i>
+    </span>
+    <ul class="dropdown-menu" id="dropdownMenu">
+      <li><a href="{% url 'personal_details' %}" target="_blank">Personal Details</a></li>
+      <li><a href="{% url 'education' %}" target="_blank">Education</a></li>
+      <li><a href="{% url 'personal_skills' %}" target="_blank">Personal Skills</a></li>
+      <li><a href="{% url 'personal_projects' %}" target="_blank">Personal Projects</a></li>
+      <li><a href="{% url 'internships' %}" target="_blank">Internships & Certifications</a></li>
+    </ul>
   </div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
 
   <ul class="nav-links" id="navLinks">
     <li><a href="/">Home</a></li>
@@ -51,73 +35,51 @@
     <li><a href="/#projects">Projects</a></li>
     <li><a href="/#resume">Resume</a></li>
     <li><a href="/#contact">Contact</a></li>
-
   </ul>
 </nav>
 
+{% block content %}{% endblock %}
 
+<!-- Footer -->
+<footer class="footer-nav">
+  <div class="footer-container">
+    <p class="footer-message">
+      © 2025 Adishti Charan Teja. Designed & developed with dedication and purple passion.
+    </p>
+  </div>
+</footer>
 
-
-    <!-- Main Content -->
-    {% block content %}{% endblock %}
-
-    <!-- Footer Navbar -->
-    <footer class="footer-nav">
-        <div class="footer-container">
-             <p class="footer-message">
-                    © 2025 Adishti Charan Teja. Designed & developed with dedication and purple passion.
-                </p>
-        </div>
-    </footer>
- <script>
-  function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.classList.toggle("active");
-  }
-</script>
+<!-- Scripts -->
 <script>
 function toggleMenu() {
-    const nav = document.getElementById('navLinks');
+  const nav = document.getElementById("navLinks");
+  nav.classList.toggle("active");
+}
 
-    const dropdown = document.getElementById('dropdownMenu');
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdownToggle = document.getElementById("dropdownToggle");
+  const dropdownMenu = document.getElementById("dropdownMenu");
 
-    nav.classList.toggle('active');
-
-    // If dropdown is visible on mobile, toggle it too
+  dropdownToggle.addEventListener("click", (e) => {
     if (window.innerWidth <= 768) {
-        dropdown.classList.toggle('active');
+      e.stopPropagation();
+      dropdownMenu.classList.toggle("show");
     }
-}
+  });
 
-// ✅ Close mobile menu and dropdown after clicking a link
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('#navLinks a, #dropdownMenu a');
-    const nav = document.getElementById('navLinks');
-    const dropdown = document.getElementById('dropdownMenu');
+  document.addEventListener("click", (e) => {
+    if (!dropdownMenu.contains(e.target) && !dropdownToggle.contains(e.target)) {
+      dropdownMenu.classList.remove("show");
+    }
+  });
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            dropdown.classList.remove('active');
-    nav.classList.toggle('active');
-}
-
-// ✅ Close mobile menu after clicking a link
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('#navLinks a');
-    const nav = document.getElementById('navLinks');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (nav.classList.contains('active')) {
-                nav.classList.remove('active');
-            }
-
-        });
+  document.querySelectorAll("#dropdownMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      dropdownMenu.classList.remove("show");
     });
+  });
 });
 </script>
-
 
 </body>
 </html>

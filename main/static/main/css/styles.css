@@ -27,6 +27,9 @@ body {
     padding: 1rem 2rem;
     box-shadow: 0 2px 15px rgba(255, 255, 255, 0.1);
 }
+.section {
+  margin-top: 80px; /* space below fixed navbar */
+}
 
 .logo {
     display: flex;
@@ -302,7 +305,6 @@ body {
     display: block;
   }
 }
-<<<<<<< HEAD
 /* === Logo Dropdown === */
 .logo-dropdown {
     position: relative;
@@ -638,4 +640,32 @@ body {
   transform: scale(1.8);
   box-shadow: 0 0 20px #bb00ff;
   z-index: 10;
+}
+/* === FIX: Desktop hover for dropdown menu === */
+@media (min-width: 769px) {
+  .logo-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .logo-dropdown:hover .dropdown-indicator {
+    transform: rotate(180deg);
+  }
+}
+
+/* === FIX: Mobile click-to-toggle support === */
+@media screen and (max-width: 768px) {
+  .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+}
+
+/* === FIX: Ensure content isn't hidden under navbar === */
+body {
+  padding-top: 90px; /* Adjusted to match your .navbar height */
 }
