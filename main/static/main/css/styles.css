@@ -28,10 +28,44 @@ body {
     padding: 1rem 2rem;
     box-shadow: 0 2px 15px rgba(255, 255, 255, 0.1);
 }
+
 .section {
-  margin-top: 80px; /* space below fixed navbar */
+    margin-top: 80px; /* space below fixed navbar */
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 50px 35px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.section:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 25px #bb00ff;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 10px white;
+}
+
+.section p,
+.section li {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+/* === Logo === */
 .logo {
     display: flex;
     align-items: center;
@@ -56,6 +90,7 @@ body {
     white-space: nowrap;
 }
 
+/* === Navigation Links === */
 .nav-links {
     list-style: none;
     display: flex;
@@ -113,42 +148,6 @@ body {
     transform: scale(1.05) rotate(2deg);
 }
 
-/* === Section Container === */
-.section {
-    width: 90%;
-    max-width: 1000px;
-    margin: 60px auto;
-    padding: 50px 35px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    text-align: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.section:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 0 25px #bb00ff;
-}
-
-.section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-    text-shadow: 0 0 10px white;
-}
-
-.section p,
-.section li {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin: 10px 0;
-    color: #ffffff;
-}
-
 /* === Resume Button === */
 .resume-btn {
     display: inline-block;
@@ -169,42 +168,82 @@ body {
 }
 
 /* === Skills === */
+
+.skills-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+  position: relative;
+}
+
+/* Skill buttons aligned horizontally */
 .skills-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .skills-list li {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid #bb00ff;
-    padding: 10px 20px;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #bb00ff;
+  padding: 15px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-align: center;
+}
+
+.skills-list li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
 .skills-list li:hover {
-    background: #bb00ff;
-    color: white;
-    box-shadow: 0 0 12px #bb00ff;
+  background-color: #bb00ff;
+  box-shadow: 0 0 12px #bb00ff;
 }
 
+/* Description box hidden by default */
 .skill-detail {
-    display: none;
-    padding: 15px;
-    margin: 10px 0 20px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    animation: fadeIn 0.4s ease-in-out;
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-top: 20px;
+  color: white;
+  width: 60%;
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  animation: fadeIn 0.4s ease-in-out;
 }
+
+/* Show the one that is targeted */
+.skill-detail:target {
+  display: block;
+}
+
+/* Optional: fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 /* === Footer === */
 .footer-nav {
@@ -293,19 +332,7 @@ body {
         transform: translateY(0);
     }
 }
-.menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  color: white;
-  cursor: pointer;
-}
 
-/* Show on mobile */
-@media screen and (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-}
 /* === Logo Dropdown === */
 .logo-dropdown {
     position: relative;
@@ -316,7 +343,7 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-     background: rgba(43, 10, 61, 0.8);
+    background: rgba(43, 10, 61, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
     border-radius: 12px;
@@ -336,35 +363,6 @@ body {
     visibility: visible;
     transform: translateY(0);
 }
-@media screen and (max-width: 768px) {
-  .logo-dropdown {
-      position: relative;
-      width: auto;
-      z-index: 999;
-  }
-
-  .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: auto;
-      background: rgba(43, 10, 61, 0.95);
-      padding: 10px 15px;
-      border-radius: 10px;
-      display: none;
-      z-index: 9999;
-      box-shadow: 0 0 10px #00000055;
-  }
-
-  .dropdown-menu.show {
-      display: block;
-  }
-
-  .logo-text {
-      cursor: pointer;
-  }
-}
-
 
 .dropdown-menu li {
     padding: 10px 20px;
@@ -383,6 +381,7 @@ body {
     border-radius: 8px;
     text-shadow: 0 0 6px white;
 }
+
 .dropdown-indicator {
     margin-left: 8px;
     font-size: 0.8rem;
@@ -394,6 +393,8 @@ body {
 .logo-dropdown:hover .dropdown-indicator {
     transform: rotate(180deg);
 }
+
+/* === Family Container === */
 .family-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -427,6 +428,8 @@ body {
     margin-bottom: 15px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
+
+/* === Education Container === */
 .education-container {
     display: flex;
     flex-direction: column;
@@ -447,10 +450,11 @@ body {
 }
 
 .education-card:hover {
-  overflow: visible;               /* allow internal scaling */
-  padding-bottom: 50px;            /* extra space below for zoom */
-  transition: all 0.3s ease-in-out;
+    overflow: visible; /* allow internal scaling */
+    padding-bottom: 50px; /* extra space below for zoom */
+    transition: all 0.3s ease-in-out;
 }
+
 .education-photo {
     width: 100%;
     max-width: 100%;
@@ -459,288 +463,190 @@ body {
     margin-bottom: 15px;
     object-fit: cover;
 }
-.education-card {
-  position: relative;
-  overflow: hidden; /* ⛔ prevent image from going outside unless changed */
-  transition: all 0.3s ease-in-out;
-  padding: 20px;
-  margin-bottom: 30px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-}
 
 .education-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-  margin-top: 15px;
-  transition: all 0.3s ease-in-out;
-  align-items: start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out;
+    align-items: start;
 }
 
 .education-gallery-photo {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  z-index: 1;
-  display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    z-index: 1;
 }
 
 /* 🪄 Zoomed image scales up and expands container */
 .education-gallery-photo:hover {
-  transform: scale(1.8); /* Larger but responsive */
-  box-shadow: 0 0 20px #bb00ff;
-  z-index: 10;
+    transform: scale(1.8); /* Larger but responsive */
+    box-shadow: 0 0 20px #bb00ff;
+    z-index: 10;
 }
+
+/* === Skills Container === */
 .skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
 }
 
 .skill-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 20px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #bb00ff;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #bb00ff;
 }
 
 .skill-img {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 15px;
-  object-fit: contain;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    object-fit: contain;
 }
+
+/* === Projects Grid === */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 20px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 0 20px #bb00ff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 20px #bb00ff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #bb00ff;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #bb00ff;
 }
 
 .project-img {
-  width: 100%;
-  max-width: 300px;      /* ✅ limits size */
-  height: auto;          /* ✅ maintains correct ratio */
-  object-fit: contain;   /* ✅ shows entire image */
-  display: block;
-  margin: 0 auto 15px;   /* ✅ centers the image */
-  border-radius: 12px;
-  box-shadow: 0 0 10px #ffffff30;
-  transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 300px; /* ✅ limits size */
+    height: auto; /* ✅ maintains correct ratio */
+    object-fit: contain; /* ✅ shows entire image */
+    display: block;
+    margin: 0 auto 15px; /* ✅ centers the image */
+    border-radius: 12px;
+    box-shadow: 0 0 10px #ffffff30;
+    transition: transform 0.3s ease;
 }
+
+/* === Internship Grid === */
 .internship-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .internship-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 25px;
-  color: white;
-  margin-bottom: 40px;
-  box-shadow: 0 0 15px #bb00ff;
-  transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 25px;
+    color: white;
+    margin-bottom: 40px;
+    box-shadow: 0 0 15px #bb00ff;
+    transition: transform 0.3s ease;
 }
 
 .internship-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 25px #bb00ff;
+    transform: scale(1.02);
+    box-shadow: 0 0 25px #bb00ff;
 }
 
 .internship-img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 20px;
 }
 
 .internship-gallery {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .internship-gallery-img {
-  max-width: 180px;
-  width: auto;                   /* ✅ Let it shrink to fit width naturally */
-  height: auto;                  /* ✅ Let it keep native height */
-  border-radius: 12px;
-  object-fit: cover;             /* ✅ Fills container neatly */
-  box-shadow: 0 0 10px #ffffff22;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  display: block;
+    max-width: 180px;
+    width: auto; /* ✅ Let it shrink to fit width naturally */
+    height: auto; /* ✅ Let it keep native height */
+    border-radius: 12px;
+    object-fit: cover; /* ✅ Fills container neatly */
+    box-shadow: 0 0 10px #ffffff22;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: block;
 }
+
 .internship-gallery-img:hover {
-  transform: scale(1.8);
-  z-index: 10;
-  box-shadow: 0 0 20px #bb00ff;
+    transform: scale(1.8);
+    z-index: 10;
+    box-shadow: 0 0 20px #bb00ff;
 }
+
+/* === Certifications Container === */
 .certifications-container {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  padding: 25px;
-  color: white;
-  margin-top: 40px;
-  box-shadow: 0 0 15px #bb00ff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 25px;
+    color: white;
+    margin-top: 40px;
+    box-shadow: 0 0 15px #bb00ff;
 }
 
 .certificate-card {
-  margin-bottom: 30px;
-  text-align: center;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .certificate-img {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 10px #ffffff22;
-  cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px #ffffff22;
+    cursor: pointer;
 }
 
 .certificate-img:hover {
-  transform: scale(1.8);
-  box-shadow: 0 0 20px #bb00ff;
-  z-index: 10;
-}
-/* === FIX: Desktop hover for dropdown menu === */
-/* === Mobile Fix Overrides === */
-/* === Final Mobile Dropdown Fix === */
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  .menu-toggle {
-    display: block;
-    align-self: flex-end;
-    font-size: 2rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: white;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(43, 10, 61, 0.95);
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    z-index: 999;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links li {
-    width: 100%;
-    text-align: left;
-    margin: 10px 0;
-  }
-
-  .logo-dropdown {
-    width: 100%;
-  }
-
-  .logo-text {
-    display: block;
-    width: 100%;
-    font-size: 1rem;
-    text-align: left;
-    cursor: pointer;
-  }
-
-  .dropdown-menu {
-    display: none;
-    position: relative;
-    background: rgba(43, 10, 61, 0.95);
-    margin-top: 10px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
-    width: 100%;
-    z-index: 998;
-  }
-
-  .dropdown-menu.show {
-    display: block;
-  }
-
-  .dropdown-menu li {
-    margin: 8px 0;
-  }
-
-  .dropdown-menu li a {
-    color: white;
-    font-size: 1rem;
-    text-decoration: none;
-    display: block;
-  }
-
-  .dropdown-menu li a:hover {
-    background-color: #bb00ff;
-    border-radius: 6px;
-    padding: 5px;
-  }
-
-  body {
-    padding-top: 90px;
-  }
-}
+    transform: scale(1.8);
+    box-shadow: 0 0 20px #bb00ff;
+   

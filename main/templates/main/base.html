@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<!-- Top Navbar -->
+<!-- Navbar -->
 <nav class="navbar">
   <div class="logo logo-dropdown" id="profileDropdown">
     <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
@@ -38,43 +38,58 @@
   </ul>
 </nav>
 
+<!-- Main -->
 {% block content %}{% endblock %}
 
+<!-- Footer -->
 <footer class="footer-nav">
   <div class="footer-container">
     <p class="footer-message">© 2025 Adishti Charan Teja. Designed & developed with dedication and purple passion.</p>
   </div>
 </footer>
 
+<!-- ✅ JS for toggling dropdown and auto-close -->
 <script>
-function toggleMenu() {
-  const nav = document.getElementById('navLinks');
-  nav.classList.toggle('active');
-}
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.getElementById("navLinks");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const dropdownToggle = document.getElementById("dropdownToggle");
-  const dropdownMenu = document.getElementById("dropdownMenu");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
 
-  dropdownToggle.addEventListener("click", (e) => {
-    if (window.innerWidth <= 768) {
+    // ✅ Close mobile nav if user clicks outside
+    document.addEventListener("click", function (e) {
+      const clickedInsideMenu = navLinks.contains(e.target) || menuToggle.contains(e.target);
+      if (!clickedInsideMenu) {
+        navLinks.classList.remove("active");
+      }
+    });
+
+    // ✅ Auto-close dropdown when clicking outside
+    const dropdown = document.querySelector(".dropdown-menu");
+    const profileToggle = document.getElementById("dropdownToggle");
+
+    profileToggle.addEventListener("click", function (e) {
       e.stopPropagation();
-      dropdownMenu.classList.toggle("show");
-    }
-  });
+      dropdown.classList.toggle("show");
+    });
 
-  document.addEventListener("click", (e) => {
-    if (!dropdownMenu.contains(e.target) && !dropdownToggle.contains(e.target)) {
-      dropdownMenu.classList.remove("show");
-    }
-  });
+    document.addEventListener("click", function (e) {
+      if (!dropdown.contains(e.target) && !profileToggle.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
 
-  document.querySelectorAll("#dropdownMenu a").forEach(link => {
-    link.addEventListener("click", () => {
-      dropdownMenu.classList.remove("show");
+    // ✅ Close both menus when a link is clicked
+    document.querySelectorAll(".nav-links a, .dropdown-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        dropdown.classList.remove("show");
+      });
     });
   });
-});
 </script>
+
 </body>
 </html>
