@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Top Navbar -->
 <nav class="navbar">
   <div class="logo logo-dropdown" id="profileDropdown">
     <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
@@ -40,20 +40,16 @@
 
 {% block content %}{% endblock %}
 
-<!-- Footer -->
 <footer class="footer-nav">
   <div class="footer-container">
-    <p class="footer-message">
-      © 2025 Adishti Charan Teja. Designed & developed with dedication and purple passion.
-    </p>
+    <p class="footer-message">© 2025 Adishti Charan Teja. Designed & developed with dedication and purple passion.</p>
   </div>
 </footer>
 
-<!-- Scripts -->
 <script>
 function toggleMenu() {
-  const nav = document.getElementById("navLinks");
-  nav.classList.toggle("active");
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -80,6 +76,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-
 </body>
 </html>

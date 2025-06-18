@@ -6,6 +6,7 @@ body {
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     color: #ffffff;
+    padding-top: 90px; /* Adjusted to match your .navbar height */
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -336,25 +337,34 @@ body {
     transform: translateY(0);
 }
 @media screen and (max-width: 768px) {
-    .logo-dropdown {
-        width: 100%;
-    }
+  .logo-dropdown {
+      position: relative;
+      width: auto;
+      z-index: 999;
+  }
 
-    .dropdown-menu {
-        position: static;
-        transform: none;
-        visibility: visible;
-        opacity: 1;
-        margin-top: 10px;
-        background: rgba(43, 10, 61, 0.95);
-        border-radius: 10px;
-        padding: 10px 15px;
-    }
+  .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: auto;
+      background: rgba(43, 10, 61, 0.95);
+      padding: 10px 15px;
+      border-radius: 10px;
+      display: none;
+      z-index: 9999;
+      box-shadow: 0 0 10px #00000055;
+  }
 
-    .logo-dropdown:hover .dropdown-menu {
-        transform: none;
-    }
+  .dropdown-menu.show {
+      display: block;
+  }
+
+  .logo-text {
+      cursor: pointer;
+  }
 }
+
 
 .dropdown-menu li {
     padding: 10px 20px;
@@ -642,30 +652,95 @@ body {
   z-index: 10;
 }
 /* === FIX: Desktop hover for dropdown menu === */
-@media (min-width: 769px) {
-  .logo-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .logo-dropdown:hover .dropdown-indicator {
-    transform: rotate(180deg);
-  }
-}
-
-/* === FIX: Mobile click-to-toggle support === */
+/* === Mobile Fix Overrides === */
+/* === Final Mobile Dropdown Fix === */
 @media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    align-self: flex-end;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(43, 10, 61, 0.95);
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: left;
+    margin: 10px 0;
+  }
+
+  .logo-dropdown {
+    width: 100%;
+  }
+
+  .logo-text {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+  }
+
   .dropdown-menu {
     display: none;
+    position: relative;
+    background: rgba(43, 10, 61, 0.95);
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    width: 100%;
+    z-index: 998;
   }
 
   .dropdown-menu.show {
     display: block;
   }
-}
 
-/* === FIX: Ensure content isn't hidden under navbar === */
-body {
-  padding-top: 90px; /* Adjusted to match your .navbar height */
+  .dropdown-menu li {
+    margin: 8px 0;
+  }
+
+  .dropdown-menu li a {
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-menu li a:hover {
+    background-color: #bb00ff;
+    border-radius: 6px;
+    padding: 5px;
+  }
+
+  body {
+    padding-top: 90px;
+  }
 }
