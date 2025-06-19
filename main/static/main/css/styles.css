@@ -1,21 +1,93 @@
 /* === Reset & Base Styles === */
+
+/* Replace all other color usages with var(--xxx) throughout your CSS */
+.theme-toggle {
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: white;
+  margin-left: 20px;
+  animation: floatCaret 2s ease-in-out infinite;
+}
+
 html {
   height: 100%;
   overflow-x: hidden;
   position: relative;
 }
 
-html::before {
-  content: "";
+.background-gradient {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -999;
   width: 100%;
   height: 100%;
+  background: linear-gradient(-45deg, #2b0a3d, #4b0082, #8e2de2, #bb00ff); /* default light theme */
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  transition: background 1s ease-in-out;
+}
+/* default light mode already has gradient */
+.background-gradient {
   background: linear-gradient(-45deg, #2b0a3d, #4b0082, #8e2de2, #bb00ff);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+  transition: background 1s ease-in-out;
+}
+
+/* dark theme version (animated too) */
+.background-gradient.dark-mode {
+  background: linear-gradient(-45deg,
+    #000000,
+    #0a0a0a,
+    #121212,
+    #1a1a1a,
+    #232323,
+    #1a1a1a,
+    #121212,
+    #0a0a0a,
+    #000000
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+/* === Theme Switcher in Navbar === */
+.theme-switcher {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-switcher a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+#theme-icon {
+  font-size: 22px;
+  transition: all 0.6s ease-in-out;
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* When switching to sun (light mode) */
+html:not(.dark-mode) #theme-icon.fa-sun {
+  color: #FFD700; /* golden yellow sun */
+  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
+  transform: rotate(180deg) scale(1.2);
+}
+
+/* When switching to moon (dark mode) */
+html.dark-mode #theme-icon.fa-moon {
+  color: white;
+  text-shadow: 0 0 8px #ffffffaa, 0 0 12px #ffffff44;
+  transform: rotate(-180deg) scale(1.2);
+}
+#theme-label {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: -3px; /* same as other nav item label spacing */
 }
 
 body {
@@ -45,7 +117,7 @@ body {
     align-items: center;
 
     box-shadow: 0 2px 15px rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
+    padding: 0.1rem rem;
 }
 
 .section {
@@ -145,6 +217,23 @@ body {
 
 
 /* === Navigation Links === */
+.nav-links li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+
+.nav-links i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -340,9 +429,9 @@ body {
 
 /* === Animations === */
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% { background-position: 0% 65%; }
+    50% { background-position: 100% 65%; }
+    100% { background-position: 0% 65%; }
 }
 
 /* === Mobile Navigation === */

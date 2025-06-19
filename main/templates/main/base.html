@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light-theme">  <!-- default -->
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Charan's Portfolio{% endblock %}</title>
@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<div class="background-gradient" id="bg-gradient"></div>
 
 <!-- Navbar -->
 <nav class="navbar">
@@ -30,15 +31,48 @@
 
   <ul class="nav-links" id="navLinks">
     <div id="google_translate_element"></div>
-    <li><a href="/">Home</a></li>
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#skills">Skills</a></li>
-    <li><a href="/#projects">Projects</a></li>
-    <li><a href="/#resume">Resume</a></li>
-    <li><a href="/#contact">Contact</a></li>
-  </ul>
-</nav>
+<li>
+  <a id="theme-toggle" class="theme-switcher" href="javascript:void(0);" title="Toggle Theme">
+    <i id="theme-icon" class="fas fa-moon"></i><br>
+    <span id="theme-label">Dark Mode</span>
+  </a>
+</li>
 
+
+
+   <li>
+    <a href="/">
+      <i class="fas fa-home"></i><br>Home
+    </a>
+  </li>
+  <li>
+    <a href="/#about">
+      <i class="fas fa-user"></i><br>About
+    </a>
+  </li>
+  <li>
+    <a href="/#skills">
+      <i class="fas fa-laptop-code"></i><br>Skills
+    </a>
+  </li>
+  <li>
+    <a href="/#projects">
+      <i class="fas fa-project-diagram"></i><br>Projects
+    </a>
+  </li>
+  <li>
+    <a href="/#resume">
+      <i class="fas fa-file-alt"></i><br>Resume
+    </a>
+  </li>
+  <li>
+    <a href="/#contact">
+      <i class="fas fa-envelope"></i><br>Contact
+    </a>
+  </li>
+</ul>
+
+</nav>
 <!-- Main -->
 {% block content %}{% endblock %}
 
@@ -96,12 +130,78 @@
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
-      includedLanguages: 'en,fr,es,de', // or any other
+      includedLanguages: 'en,fr,es,de,te,ta,hi', // or any other
       layout: google.translate.TranslateElement.InlineLayout.SIMPLE
     }, 'google_translate_element');
   }
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+  const bg = document.getElementById('bg-gradient');
+
+  function applyTheme(mode) {
+    if (mode === 'dark') {
+      bg.classList.add('dark-mode');
+      icon.className = 'fas fa-sun';
+    } else {
+      bg.classList.remove('dark-mode');
+      icon.className = 'fas fa-moon';
+    }
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('theme', mode);
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const current = localStorage.getItem('theme') || 'light';
+    const newTheme = current === 'light' ? 'dark' : 'light';
+    applyTheme(newTheme);
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("theme-toggle");
+    const icon = document.getElementById("theme-icon");
+    const label = document.getElementById("theme-label");
+    const html = document.documentElement;
+
+    // Set initial state
+    if (localStorage.getItem("theme") === "dark") {
+      html.classList.add("dark-mode");
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
+      label.textContent = "Light Mode";
+    } else {
+      label.textContent = "Dark Mode";
+    }
+
+    toggle.addEventListener("click", function () {
+      html.classList.toggle("dark-mode");
+
+      setTimeout(() => {
+        if (html.classList.contains("dark-mode")) {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+          label.textContent = "Light Mode";
+          localStorage.setItem("theme", "dark");
+        } else {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+          label.textContent = "Dark Mode";
+          localStorage.setItem("theme", "light");
+        }
+      }, 100);
+    });
+  });
+</script>
+
 
 </body>
 </html>
