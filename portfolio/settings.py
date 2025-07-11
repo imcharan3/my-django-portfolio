@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-xyz123$%#your-local-secret-key'  # Can be anything
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # ✅ Enable debug mode locally
 
-ALLOWED_HOSTS = []  # ✅ Empty means local access only
+ALLOWED_HOSTS = ['imcharan3.pythonanywhere.com']  # ✅ Empty means local access only
 
 
 # Application definition
