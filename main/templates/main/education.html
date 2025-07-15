@@ -2,11 +2,11 @@
 {% block title %}Education{% endblock %}
 
 {% block content %}
-<section class="section">
+<section id="education" class="section" data-aos="fade-right" data-aos-delay="200">
   <h2>Education</h2>
   <div class="education-container">
     {% for edu in education %}
-      <div class="education-card">
+      <div class="education-card" data-aos="zoom-in" data-aos-delay="300">
         <img src="{{ edu.photo.url }}" class="education-photo">
         <h3>{{ edu.degree }}</h3>
         <p><strong>Institution:</strong> {{ edu.institution }}</p>
@@ -18,7 +18,7 @@
 
         <div class="education-gallery">
           {% for img in edu.images.all %}
-           <img src="{{ img.image.url }}" alt="Gallery" class="education-gallery-photo">
+            <img src="{{ img.image.url }}" alt="Gallery" class="education-gallery-photo" data-aos="fade-up" data-aos-delay="400">
           {% endfor %}
         </div>
       </div>

@@ -2,7 +2,7 @@
 {% block title %}Personal Details{% endblock %}
 
 {% block content %}
-<section class="section">
+<section id="personal-details" class="section" data-aos="fade-up" data-aos-delay="200">
   <h2>Personal Details</h2>
   {% for detail in data %}
     <p><strong>Name:</strong> {{ detail.full_name }}</p>
@@ -14,11 +14,11 @@
   {% endfor %}
 </section>
 
-<section class="section">
+<section id="family-details" class="section" data-aos="fade-left" data-aos-delay="200">
   <h2>Family Details</h2>
   <div class="family-container">
     {% for member in family %}
-      <div class="family-card">
+      <div class="family-card" data-aos="zoom-in" data-aos-delay="300">
         <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="family-photo">
         <h3>{{ member.relation }} - {{ member.name }}</h3>
         <p><strong>Occupation:</strong> {{ member.occupation }}</p>

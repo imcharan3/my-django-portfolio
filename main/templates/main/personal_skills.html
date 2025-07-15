@@ -2,11 +2,11 @@
 {% block title %}Personal Skills{% endblock %}
 
 {% block content %}
-<section class="section">
+<section id="personal-skills" class="section" data-aos="fade-up" data-aos-delay="200">
   <h2>Personal Skills</h2>
   <div class="skills-container">
     {% for skill in skills %}
-      <div class="skill-card">
+      <div class="skill-card" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:3|stringformat:'d' }}00">
         <img src="{{ skill.image }}" alt="{{ skill.title }}" class="skill-img">
         <h3>{{ skill.title }}</h3>
         <p>{{ skill.description }}</p>
