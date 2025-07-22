@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% block title %}Internships & Certifications{% endblock %}
+
+{% block content %}
+<section id="internships" class="section" data-aos="fade-left" data-aos-delay="200">
+  <h2>Internships & Certifications</h2>
+
+  <!-- 🔹 INTERNSHIP CONTAINER -->
+  <div class="internship-card" data-aos="zoom-in-up" data-aos-delay="300">
+    <h3>Internship - Aspire Primograd</h3>
+    <img src="/static/main/img/primograd_logo.jpg" alt="Internship Icon" class="internship-img">
+    <p><strong>Program:</strong> Data Analytics</p>
+    <p><strong>Organization:</strong> Aspire Primograd</p>
+    <p><strong>Duration:</strong> 6 Weeks</p>
+    <p><strong>Start Date:</strong> 16/06/2025</p>
+    <p><strong>Status:</strong> Offer Accepted</p>
+    <p><strong>Description:</strong> A structured internship providing hands-on experience in front-end and back-end development.</p>
+    <a href="/static/main/docs/offer_letter.pdf" class="resume-btn" download>
+      <i class="fa fa-download"></i> Download Offer Letter
+    </a>
+
+    <!-- 🖼️ Internship Images -->
+    <div class="internship-gallery">
+      <img src="/static/main/img/internship1.png" alt="Internship Image 1" class="internship-gallery-img" data-aos="fade-up" data-aos-delay="400">
+      <img src="/static/main/img/internship2.png" alt="Internship Image 2" class="internship-gallery-img" data-aos="fade-up" data-aos-delay="500">
+    </div>
+  </div>
+
+  <!-- 🔹 CERTIFICATIONS CONTAINER -->
+  <div class="certifications-container" data-aos="fade-right" data-aos-delay="200">
+    <h3>Certifications</h3>
+
+    <div class="certificate-card" data-aos="flip-left" data-aos-delay="300">
+      <img src="/static/main/img/cert1.png" alt="Certificate 1" class="certificate-img">
+      <p><strong>Data Visualization - Tata Group & Forage</strong></p>
+      <p>Completed the “Data Visualisation: Empowering Business with Effective Insights” virtual internship program by Tata Group and Forage. Strengthened skills in data storytelling, business framing, impactful visuals, and insight communication.</p>
+    </div>
+
+    <div class="certificate-card" data-aos="flip-left" data-aos-delay="400">
+      <img src="/static/main/img/cert2.png" alt="Certificate 2" class="certificate-img">
+      <p><strong>Google Sheets for Beginners - Simplilearn</strong></p>
+      <p>Completed the Google Sheets course on Simplilearn. Gained hands-on experience with dynamic spreadsheets, advanced formulas, and workflow automation to boost productivity and data management.</p>
+    </div>
+
+    <div class="certificate-card" data-aos="flip-left" data-aos-delay="500">
+      <img src="/static/main/img/cert3.png" alt="Certificate 3" class="certificate-img">
+      <p><strong>Power BI for Beginners - Simplilearn</strong></p>
+      <p>Successfully completed Power BI training by Simplilearn. Developed skills to create interactive dashboards, analyze business data, and generate powerful visual reports using Microsoft Power BI.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% block title %}Personal Details{% endblock %}
+
+{% block content %}
+<section id="personal-details" class="section" data-aos="fade-up" data-aos-delay="200">
+  <h2>Personal Details</h2>
+  {% for detail in data %}
+    <p><strong>Name:</strong> {{ detail.full_name }}</p>
+    <p><strong>Date of Birth:</strong> {{ detail.dob }}</p>
+    <p><strong>Address:</strong> {{ detail.address }}</p>
+    <p><strong>Phone:</strong> {{ detail.phone }}</p>
+    <p><strong>Email:</strong> {{ detail.email }}</p>
+    <p><strong>Bio:</strong> {{ detail.bio }}</p>
+  {% endfor %}
+</section>
+
+<section id="family-details" class="section" data-aos="fade-left" data-aos-delay="200">
+  <h2>Family Details</h2>
+  <div class="family-container">
+    {% for member in family %}
+      <div class="family-card" data-aos="zoom-in" data-aos-delay="300">
+        <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="family-photo">
+        <h3>{{ member.relation }} - {{ member.name }}</h3>
+        <p><strong>Occupation:</strong> {{ member.occupation }}</p>
+        <p><strong>Contact:</strong> {{ member.contact }}</p>
+        <p>{{ member.about }}</p>
+      </div>
+    {% empty %}
+      <p>No family members added yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

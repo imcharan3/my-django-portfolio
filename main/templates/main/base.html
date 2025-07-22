@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="light-theme">  <!-- default -->
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Charan's Portfolio{% endblock %}</title>
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="background-gradient" id="bg-gradient"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo logo-dropdown" id="profileDropdown">
+    <img src="{% static 'main/img/profile.jpg' %}" alt="Logo" class="logo-img">
+    <span class="logo-text" id="dropdownToggle">
+      ADISHTI CHARAN TEJA <i class="fas fa-caret-down dropdown-indicator"></i>
+    </span>
+    <ul class="dropdown-menu" id="dropdownMenu">
+      <li><a href="{% url 'personal_details' %}" target="_blank">Personal Details</a></li>
+      <li><a href="{% url 'education' %}" target="_blank">Education</a></li>
+      <li><a href="{% url 'personal_skills' %}" target="_blank">Personal Skills</a></li>
+      <li><a href="{% url 'personal_projects' %}" target="_blank">Personal Projects</a></li>
+      <li><a href="{% url 'internships' %}" target="_blank">Internships & Certifications</a></li>
+    </ul>
+  </div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+
+  <ul class="nav-links" id="navLinks">
+    <div id="google_translate_element"></div>
+<li>
+  <a id="theme-toggle" class="theme-switcher" href="javascript:void(0);" title="Toggle Theme">
+    <i id="theme-icon" class="fas fa-moon"></i><br>
+    <span id="theme-label">Dark Mode</span>
+  </a>
+</li>
+
+
+
+   <li>
+    <a href="/">
+      <i class="fas fa-home"></i><br>Home
+    </a>
+  </li>
+  <li>
+    <a href="/#about">
+      <i class="fas fa-user"></i><br>About
+    </a>
+  </li>
+  <li>
+    <a href="/#skills">
+      <i class="fas fa-laptop-code"></i><br>Skills
+    </a>
+  </li>
+  <li>
+    <a href="/#projects">
+      <i class="fas fa-project-diagram"></i><br>Projects
+    </a>
+  </li>
+  <li>
+    <a href="/#resume">
+      <i class="fas fa-file-alt"></i><br>Resume
+    </a>
+  </li>
+  <li>
+    <a href="/#contact">
+      <i class="fas fa-envelope"></i><br>Contact
+    </a>
+  </li>
+</ul>
+
+</nav>
+<!-- Main -->
+{% block content %}{% endblock %}
+
+<!-- Footer -->
+<footer class="footer-nav">
+  <div class="footer-container">
+    <p class="footer-message">© 2025 Adishti Charan Teja. Designed & developed with dedication and purple passion.</p>
+  </div>
+</footer>
+
+<!-- ✅ JS for toggling dropdown and auto-close -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // ✅ Close mobile nav if user clicks outside
+    document.addEventListener("click", function (e) {
+      const clickedInsideMenu = navLinks.contains(e.target) || menuToggle.contains(e.target);
+      if (!clickedInsideMenu) {
+        navLinks.classList.remove("active");
+      }
+    });
+
+    // ✅ Auto-close dropdown when clicking outside
+    const dropdown = document.querySelector(".dropdown-menu");
+    const profileToggle = document.getElementById("dropdownToggle");
+
+    profileToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      dropdown.classList.toggle("show");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!dropdown.contains(e.target) && !profileToggle.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+
+    // ✅ Close both menus when a link is clicked
+    document.querySelectorAll(".nav-links a, .dropdown-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        dropdown.classList.remove("show");
+      });
+    });
+  });
+</script>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de,te,ta,hi', // or any other
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+  const bg = document.getElementById('bg-gradient');
+
+  function applyTheme(mode) {
+    if (mode === 'dark') {
+      bg.classList.add('dark-mode');
+      icon.className = 'fas fa-sun';
+    } else {
+      bg.classList.remove('dark-mode');
+      icon.className = 'fas fa-moon';
+    }
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('theme', mode);
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const current = localStorage.getItem('theme') || 'light';
+    const newTheme = current === 'light' ? 'dark' : 'light';
+    applyTheme(newTheme);
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("theme-toggle");
+    const icon = document.getElementById("theme-icon");
+    const label = document.getElementById("theme-label");
+    const html = document.documentElement;
+
+    // Set initial state
+    if (localStorage.getItem("theme") === "dark") {
+      html.classList.add("dark-mode");
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
+      label.textContent = "Light Mode";
+    } else {
+      label.textContent = "Dark Mode";
+    }
+
+    toggle.addEventListener("click", function () {
+      html.classList.toggle("dark-mode");
+
+      setTimeout(() => {
+        if (html.classList.contains("dark-mode")) {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+          label.textContent = "Light Mode";
+          localStorage.setItem("theme", "dark");
+        } else {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+          label.textContent = "Dark Mode";
+          localStorage.setItem("theme", "light");
+        }
+      }, 100);
+    });
+  });
+</script>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // animation duration in ms
+    once: true      // whether animation should happen only once
+  });
+</script>
+</body>
+</html>
