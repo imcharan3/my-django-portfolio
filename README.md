@@ -12,7 +12,6 @@ This is a personal portfolio website built using **Django**, HTML, CSS, and Java
 - **Deployment**: GitHub + PythonAnywhere
 
 ---
-
 ## 📁 Project Structure
 
 portfolio-site/
