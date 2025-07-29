@@ -1,4 +1,4 @@
-# 🌐 Personal Portfolio Website
+# 🌐 Personal Portfolio Website (🌍 Live Deployment Hosted on: [imcharan3.pythonanywhere.com](https://imcharan3.pythonanywhere.com)
 
 This is a personal portfolio website built using **Django**, HTML, CSS, and JavaScript. It showcases my skills, projects, resume, contact information, and more in a professional and interactive way.
 
@@ -12,10 +12,10 @@ This is a personal portfolio website built using **Django**, HTML, CSS, and Java
 - **Deployment**: GitHub + PythonAnywhere
 
 ---
-```markdown
+
 ## 📁 Project Structure
 
-```text
+```
 portfolio-site/
 ├── main/                   # Main Django app
 │   ├── migrations/
@@ -79,11 +79,6 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
----
 
-🌍 Live Deployment Hosted on: [imcharan3.pythonanywhere.com](https://imcharan3.pythonanywhere.com)
-
-
----
 
 
