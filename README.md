@@ -56,7 +56,7 @@ portfolio-site/
 
 ## 🚀 How to Run Locally
 
-'''bash
+```bash
 # Clone the repository
 git clone https://github.com/imcharan3/my-django-portfolio.git
 cd my-django-portfolio
@@ -76,8 +76,6 @@ python manage.py createsuperuser
 
 # Run the server
 python manage.py runserver
-
-'''bash
 
 
 ---
