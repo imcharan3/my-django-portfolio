@@ -76,12 +76,12 @@ python manage.py createsuperuser
 
 # Run the server
 python manage.py runserver
-
+```
 
 ---
 
 🌍 Live Deployment
-Hosted on: PythonAnywhere
+Hosted on: imcharan3.pythonanywhere.com
 
 ---
 
