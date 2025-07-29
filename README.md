@@ -12,24 +12,26 @@ This is a personal portfolio website built using **Django**, HTML, CSS, and Java
 - **Deployment**: GitHub + PythonAnywhere
 
 ---
+```markdown
 ## 📁 Project Structure
 
+```text
 portfolio-site/
-├── main/ # Main Django app
-│ ├── migrations/
-│ ├── static/ # Static files (CSS, JS, icons)
-│ │ └── main/
-│ │ ├── css/
-│ │ ├── js/
-│ │ └── img/
-│ ├── templates/
-│ │ └── main/
-│ ├── models.py
-│ ├── views.py
-│ └── urls.py
-├── portfolio/ # Django project folder
-│ └── urls.py
-├── db.sqlite3 # SQLite database
+├── main/                   # Main Django app
+│   ├── migrations/
+│   ├── static/             # Static files (CSS, JS, icons)
+│   │   └── main/
+│   │       ├── css/
+│   │       ├── js/
+│   │       └── img/
+│   ├── templates/
+│   │   └── main/
+│   ├── models.py
+│   ├── views.py
+│   └── urls.py
+├── portfolio/              # Django project folder
+│   └── urls.py
+├── db.sqlite3              # SQLite database
 ├── manage.py
 └── README.md
 
