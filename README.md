@@ -80,8 +80,8 @@ python manage.py runserver
 
 ---
 
-🌍 Live Deployment
-Hosted on: imcharan3.pythonanywhere.com
+🌍 Live Deployment Hosted on: [imcharan3.pythonanywhere.com](https://imcharan3.pythonanywhere.com)
+
 
 ---
 
