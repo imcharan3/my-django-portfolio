@@ -34,7 +34,7 @@ portfolio-site/
 ├── db.sqlite3              # SQLite database
 ├── manage.py
 └── README.md
-
+```
 ---
 
 ## 🧠 Features
